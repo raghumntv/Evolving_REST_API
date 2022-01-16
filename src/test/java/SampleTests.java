@@ -27,7 +27,7 @@ public class SampleTests {
                     .body("{\n" +
                             "  \"name\": \"Tenali Ramakrishna\",\n" +
                             "  \"gender\": \"male\",\n" +
-                            "  \"email\": \"tenali.ramakrishna1950@15ce.com\",\n" +
+                            "  \"email\": \"tenali.ramakrishna1952@15ce.com\",\n" +
                             "  \"status\": \"active\"\n" +
                             "}")
                 .when()
@@ -38,8 +38,10 @@ public class SampleTests {
                     .body("data.id", Matchers.notNullValue())
                     .body("data.gender",Matchers.equalTo("male"))
                     .body("data.status",Matchers.equalTo("active"))
-                    .body("data.name",Matchers.equalTo("Tenali Ramakrishna"));
+                    .body("data.name",Matchers.equalTo("Tenali Ramakrishna"))
+                    .body("data.email",Matchers.equalTo("tenali.ramakrishna1952@15ce.com"));
 
     }
+
 }
 
