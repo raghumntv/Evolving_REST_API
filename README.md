@@ -1,7 +1,6 @@
-## IntelliJ IDEA Keyboard Shortcuts
+## overview
 
-Refactor->Extract method => option+command+m
+Single-responsibility principle achieved
+with positive and negative test cases
 
-Refactor->Extract parameter => option+command+p
-
-Refactor->Extract variable => option+command+v
+kepping a separate file for post client so that all other create api case can have access 
