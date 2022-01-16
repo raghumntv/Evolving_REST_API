@@ -1,55 +1,70 @@
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.hamcrest.Matchers;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import users.UsersClient;
+
+import java.util.UUID;
 
 import static io.restassured.RestAssured.given;
 
 public class CreateUserTests {
+
+    private UsersClient usersClient;
+
+    @BeforeClass
+    public void beforeClass(){
+        usersClient = new UsersClient();
+    }
+
     @Test
     public void shouldCreateMaleUser(){
         //Arrange
-        String body = "{\n" +
+        String email=String.format("%s@gmail.com", UUID.randomUUID());
+        String body = String.format("{\n" +
                 "  \"name\": \"Tenali Ramakrishna\",\n" +
                 "  \"gender\": \"male\",\n" +
-                "  \"email\": \"tenali.ramakrishna1958@15ce.com\",\n" +
+                "  \"email\": \"%s\",\n" +
                 "  \"status\": \"active\"\n" +
-                "}";
+                "}",email);
         //Act
-        new UsersClient().createUser(body)
-                .then()
-                .log().body()
-       //Assert
-                .statusCode(201)
-                .body("data.id", Matchers.notNullValue())
-                .body("data.gender",Matchers.equalTo("male"))
-                .body("data.status",Matchers.equalTo("active"))
-                .body("data.name",Matchers.equalTo("Tenali Ramakrishna"))
-                .body("data.email",Matchers.equalTo("tenali.ramakrishna1958@15ce.com"));
+        usersClient
+                .createUser(body)
+                    .then()
+                        .log().body()
+               //Assert
+                        .statusCode(201)
+                        .body("data.id", Matchers.notNullValue())
+                        .body("data.gender",Matchers.equalTo("male"))
+                        .body("data.status",Matchers.equalTo("active"))
+                        .body("data.name",Matchers.equalTo("Tenali Ramakrishna"))
+                        .body("data.email",Matchers.equalTo(email));
 
     }
     
     @Test
     public void shouldCreateFemaleUser(){
         //Arrange
-        String body = "{\n" +
+        String email=String.format("%s@gmail.com", UUID.randomUUID());
+        String body = String.format("{\n" +
                 "  \"name\": \"Summer\",\n" +
                 "  \"gender\": \"female\",\n" +
-                "  \"email\": \"Summer008@15ce.com\",\n" +
+                "  \"email\": \"%s\",\n" +
                 "  \"status\": \"active\"\n" +
-                "}";
+                "}",email);
         //Act
-        new UsersClient().createUser(body)
-                .then()
-                .log().body()
-        //Assert
-                .statusCode(201)
-                .body("data.id", Matchers.notNullValue())
-                .body("data.gender",Matchers.equalTo("female"))
-                .body("data.status",Matchers.equalTo("active"))
-                .body("data.name",Matchers.equalTo("Summer"))
-                .body("data.email",Matchers.equalTo("Summer008@15ce.com"));
+        usersClient
+                .createUser(body)
+                    .then()
+                        .log().body()
+                //Assert
+                        .statusCode(201)
+                        .body("data.id", Matchers.notNullValue())
+                        .body("data.gender",Matchers.equalTo("female"))
+                        .body("data.status",Matchers.equalTo("active"))
+                        .body("data.name",Matchers.equalTo("Summer"))
+                        .body("data.email",Matchers.equalTo(email));
 
     }
 

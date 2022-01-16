@@ -1,9 +1,18 @@
 import org.hamcrest.Matchers;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import users.UsersClient;
 
+import java.util.UUID;
+
 public class CreateUserNegativeTests {
 
+    private UsersClient usersClient;
+
+    @BeforeClass
+    public void beforeClass(){
+        usersClient = new UsersClient();
+    }
     @Test
     public void shouldNotAllowToCreateUserWithInvalidEmail(){
         //Arrange
@@ -14,12 +23,13 @@ public class CreateUserNegativeTests {
                 "  \"status\": \"active\"\n" +
                 "}";
         //Act
-        new UsersClient().createUser(body)
-                .then()
-                .log().body()
+        usersClient
+                .createUser(body)
                 //Assert
-                .statusCode(422)
-                .body("data", Matchers.hasItem(Matchers.hasEntry("field","email")))
-                .body("data",Matchers.hasItem(Matchers.hasEntry("message","is invalid")));
+                    .then()
+                        .log().body()
+                        .statusCode(422)
+                        .body("data", Matchers.hasItem(Matchers.hasEntry("field","email")))
+                        .body("data",Matchers.hasItem(Matchers.hasEntry("message","is invalid")));
     }
 }
