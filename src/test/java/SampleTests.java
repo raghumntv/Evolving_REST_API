@@ -27,7 +27,7 @@ public class SampleTests {
                     .body("{\n" +
                             "  \"name\": \"Tenali Ramakrishna\",\n" +
                             "  \"gender\": \"male\",\n" +
-                            "  \"email\": \"tenali.ramakrishna1947@15ce.com\",\n" +
+                            "  \"email\": \"tenali.ramakrishna1949@15ce.com\",\n" +
                             "  \"status\": \"active\"\n" +
                             "}")
                 .when()
