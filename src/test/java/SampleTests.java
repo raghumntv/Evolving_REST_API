@@ -36,6 +36,8 @@ public class SampleTests {
                     .log().body()
                     .statusCode(201)
                     .body("data.id", Matchers.notNullValue())
+                    .body("data.gender",Matchers.equalTo("male"))
+                    .body("data.status",Matchers.equalTo("active"))
                     .body("data.name",Matchers.equalTo("Tenali Ramakrishna"));
 
     }
