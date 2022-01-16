@@ -19,7 +19,7 @@ public class SampleTests {
     }
 
     @Test
-    public void shouldCreateUser(){
+    public void shouldCreateMaleUser(){
         given()
                     .accept(ContentType.JSON)
                     .contentType(ContentType.JSON)
@@ -27,7 +27,7 @@ public class SampleTests {
                     .body("{\n" +
                             "  \"name\": \"Tenali Ramakrishna\",\n" +
                             "  \"gender\": \"male\",\n" +
-                            "  \"email\": \"tenali.ramakrishna1949@15ce.com\",\n" +
+                            "  \"email\": \"tenali.ramakrishna1950@15ce.com\",\n" +
                             "  \"status\": \"active\"\n" +
                             "}")
                 .when()
