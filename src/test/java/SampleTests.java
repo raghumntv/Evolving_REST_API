@@ -1,5 +1,4 @@
 import io.restassured.http.ContentType;
-import org.hamcrest.Matcher;
 import org.hamcrest.Matchers;
 import org.testng.annotations.Test;
 
@@ -8,9 +7,12 @@ import static io.restassured.RestAssured.given;
 public class SampleTests {
     @Test
     public void shouldGetAllUsers(){
+        //Arrange
         given()
+           //Act
                 .when()
                     .get("https://gorest.co.in/public/v1/users")
+                //Assert
                 .then()
                     .statusCode(200)
                     .body("data",Matchers.hasSize(20))
@@ -20,6 +22,7 @@ public class SampleTests {
 
     @Test
     public void shouldCreateMaleUser(){
+        //Arrange
         given()
                     .accept(ContentType.JSON)
                     .contentType(ContentType.JSON)
@@ -27,20 +30,19 @@ public class SampleTests {
                     .body("{\n" +
                             "  \"name\": \"Tenali Ramakrishna\",\n" +
                             "  \"gender\": \"male\",\n" +
-                            "  \"email\": \"tenali.ramakrishna1952@15ce.com\",\n" +
+                            "  \"email\": \"tenali.ramakrishna1971@15ce.com\",\n" +
                             "  \"status\": \"active\"\n" +
                             "}")
+                //Act
                 .when()
                     .post("https://gorest.co.in/public/v1/users")
-                .then()
-                    .log().body()
-                    .statusCode(201)
-                    .body("data.id", Matchers.notNullValue())
-                    .body("data.gender",Matchers.equalTo("male"))
-                    .body("data.status",Matchers.equalTo("active"))
-                    .body("data.name",Matchers.equalTo("Tenali Ramakrishna"))
-                    .body("data.email",Matchers.equalTo("tenali.ramakrishna1952@15ce.com"));
-
+                //Assert
+                    .then()
+                        .log().body()
+                        .statusCode(201)
+                        .body("data.id", Matchers.notNullValue())
+                        .body("data.name",Matchers.equalTo("Tenali Ramakrishna"))
+                        .body("data.email",Matchers.equalTo("tenali.ramakrishna1971@15ce.com"));
     }
 
 }
