@@ -6,16 +6,20 @@ import static io.restassured.RestAssured.given;
 public class SampleTests {
     @Test
     public void shouldGetAllUsers(){
+        //Arrange
         given()
+           //Act
                 .when()
                     .get("https://gorest.co.in/public/v1/users")
-                .then()
-                    .statusCode(200)
-                    .log().body();
+                 //Assert
+                    .then()
+                        .statusCode(200)
+                        .log().body();
     }
 
     @Test
     public void shouldCreateUser(){
+        //Arrange
         given()
                     .accept(ContentType.JSON)
                     .contentType(ContentType.JSON)
@@ -23,14 +27,16 @@ public class SampleTests {
                     .body("{\n" +
                             "  \"name\": \"Tenali Ramakrishna\",\n" +
                             "  \"gender\": \"male\",\n" +
-                            "  \"email\": \"tenali.ramakrishna1943@15ce.com\",\n" +
+                            "  \"email\": \"tenali.ramakrishna1811@15ce.com\",\n" +
                             "  \"status\": \"active\"\n" +
                             "}")
-                .when()
-                    .post("https://gorest.co.in/public/v1/users")
-                .then()
-                    .log().body()
-                    .statusCode(201);
+                //Act
+                    .when()
+                        .post("https://gorest.co.in/public/v1/users")
+                //Assert
+                        .then()
+                            .log().body()
+                            .statusCode(201);
 
     }
 }
