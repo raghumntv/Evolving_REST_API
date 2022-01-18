@@ -1,4 +1,3 @@
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
@@ -6,11 +5,14 @@ import static io.restassured.RestAssured.given;
 public class SampleTests {
     @Test
     public void shouldGetAllUsers(){
+        //Arrange
         given()
+           //Act
                 .when()
                     .get("https://gorest.co.in/public/v1/users")
-                .then()
-                    .statusCode(200)
-                    .log().body();
+                 //Assert
+                    .then()
+                        .statusCode(200)
+                        .log().body();
     }
 }
