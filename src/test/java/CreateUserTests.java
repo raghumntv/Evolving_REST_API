@@ -12,7 +12,7 @@ public class CreateUserTests {
         String body = "{\n" +
                 "  \"name\": \"Tenali Ramakrishna\",\n" +
                 "  \"gender\": \"male\",\n" +
-                "  \"email\": \"tenali.ramakrishna1956@15ce.com\",\n" +
+                "  \"email\": \"tenali.ramakrishna1981@15ce.com\",\n" +
                 "  \"status\": \"active\"\n" +
                 "}";
         //Act
@@ -22,10 +22,8 @@ public class CreateUserTests {
        //Assert
                 .statusCode(201)
                 .body("data.id", Matchers.notNullValue())
-                .body("data.gender",Matchers.equalTo("male"))
-                .body("data.status",Matchers.equalTo("active"))
                 .body("data.name",Matchers.equalTo("Tenali Ramakrishna"))
-                .body("data.email",Matchers.equalTo("tenali.ramakrishna1956@15ce.com"));
+                .body("data.email",Matchers.equalTo("tenali.ramakrishna1981@15ce.com"));
 
     }
     
@@ -35,7 +33,7 @@ public class CreateUserTests {
         String body = "{\n" +
                 "  \"name\": \"Summer\",\n" +
                 "  \"gender\": \"female\",\n" +
-                "  \"email\": \"Summer006@15ce.com\",\n" +
+                "  \"email\": \"Summer008@15ce.com\",\n" +
                 "  \"status\": \"active\"\n" +
                 "}";
         //Act
@@ -45,10 +43,8 @@ public class CreateUserTests {
         //Assert
                 .statusCode(201)
                 .body("data.id", Matchers.notNullValue())
-                .body("data.gender",Matchers.equalTo("female"))
-                .body("data.status",Matchers.equalTo("active"))
                 .body("data.name",Matchers.equalTo("Summer"))
-                .body("data.email",Matchers.equalTo("Summer006@15ce.com"));
+                .body("data.email",Matchers.equalTo("Summer008@15ce.com"));
 
     }
 
