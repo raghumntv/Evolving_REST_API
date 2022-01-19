@@ -5,8 +5,12 @@ on:
       - '**'
   pull_request:
     branches: [main]
-  workflow_run:
-    workflows: [ Run Tests ]
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'
+        required: true
+        default: 'warning'
 jobs:
   build:
     runs-on: ubuntu-latest
