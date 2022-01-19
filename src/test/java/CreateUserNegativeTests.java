@@ -4,8 +4,6 @@ import org.testng.annotations.Test;
 import users.UsersClient;
 import users.create.CreateUserRequestBody;
 
-import java.util.UUID;
-
 public class CreateUserNegativeTests {
 
     private UsersClient usersClient;
@@ -17,11 +15,9 @@ public class CreateUserNegativeTests {
     @Test
     public void shouldNotAllowToCreateUserWithInvalidEmail(){
         //Arrange
-        String email="tenali.ramakrishna195615ce.com";
-        String name ="Tenali Ramakrishna";
-        String gender ="male";
-        String status = "active";
-        CreateUserRequestBody requestBody = new CreateUserRequestBody(name, gender, email, status);
+        CreateUserRequestBody requestBody = CreateUserRequestBody.builder()
+                .name("Tenali Ramakrishna").gender("male")
+                .email("tenali.ramakrishna195615ce.com").status("active").build();
         //Act
         usersClient
                 .createUser(requestBody)

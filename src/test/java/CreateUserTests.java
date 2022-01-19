@@ -19,11 +19,9 @@ public class CreateUserTests {
     public void shouldCreateMaleUser(){
         //Arrange
         String email=String.format("%s@gmail.com", UUID.randomUUID());
-        String name ="Tenali Ramakrishna";
-        String gender ="male";
-        String status = "active";
-
-        CreateUserRequestBody requestBody = new CreateUserRequestBody(name, gender, email, status);
+        CreateUserRequestBody requestBody = CreateUserRequestBody.builder()
+                .name("Tenali Ramakrishna").gender("male")
+                .email(email).status("active").build();
         //Act
         usersClient
                 .createUser(requestBody)
@@ -32,8 +30,6 @@ public class CreateUserTests {
                //Assert
                         .statusCode(201)
                         .body("data.id", Matchers.notNullValue())
-                        .body("data.gender",Matchers.equalTo("male"))
-                        .body("data.status",Matchers.equalTo("active"))
                         .body("data.name",Matchers.equalTo("Tenali Ramakrishna"))
                         .body("data.email",Matchers.equalTo(email));
 
@@ -43,10 +39,9 @@ public class CreateUserTests {
     public void shouldCreateFemaleUser(){
         //Arrange
         String email=String.format("%s@gmail.com", UUID.randomUUID());
-        String name ="Summer";
-        String gender ="female";
-        String status = "active";
-        CreateUserRequestBody requestBody = new CreateUserRequestBody(name, gender, email, status);
+        CreateUserRequestBody requestBody = CreateUserRequestBody.builder()
+                .name("Summer").gender("female")
+                .email(email).status("active").build();
         //Act
         usersClient
                 .createUser(requestBody)
@@ -55,8 +50,6 @@ public class CreateUserTests {
                 //Assert
                         .statusCode(201)
                         .body("data.id", Matchers.notNullValue())
-                        .body("data.gender",Matchers.equalTo("female"))
-                        .body("data.status",Matchers.equalTo("active"))
                         .body("data.name",Matchers.equalTo("Summer"))
                         .body("data.email",Matchers.equalTo(email));
 
