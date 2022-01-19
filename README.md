@@ -1,7 +1,5 @@
 ## overview
 
-Single-responsibility principle achieved
-with positive and negative test cases
+Deserialization
 
-Get all user common method Included in user client 
-and added before class
+Introduced CreateUserRequestBody and consuming across tests 
