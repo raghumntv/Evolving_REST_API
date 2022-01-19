@@ -1,10 +1,7 @@
-import io.restassured.response.Response;
 import org.hamcrest.Matchers;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import users.UsersClient;
-
-import static io.restassured.RestAssured.given;
 
 public class GetAllUsersTests {
     private UsersClient usersClient;

@@ -1,13 +1,9 @@
-import io.restassured.http.ContentType;
-import io.restassured.response.Response;
 import org.hamcrest.Matchers;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import users.UsersClient;
 
 import java.util.UUID;
-
-import static io.restassured.RestAssured.given;
 
 public class CreateUserTests {
 

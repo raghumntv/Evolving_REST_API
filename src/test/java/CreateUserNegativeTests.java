@@ -3,8 +3,6 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import users.UsersClient;
 
-import java.util.UUID;
-
 public class CreateUserNegativeTests {
 
     private UsersClient usersClient;
