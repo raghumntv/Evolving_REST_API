@@ -1,8 +1,8 @@
-import org.hamcrest.Matchers;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import users.UsersClient;
 import users.create.CreateUserRequestBody;
+import users.create.response.CreateUserResponse;
 
 import java.util.UUID;
 
@@ -23,16 +23,9 @@ public class CreateUserTests {
                 .name("Tenali Ramakrishna").gender("male")
                 .email(email).status("active").build();
         //Act
-        usersClient
-                .createUser(requestBody)
-                    .then()
-                        .log().body()
-               //Assert
-                        .statusCode(201)
-                        .body("data.id", Matchers.notNullValue())
-                        .body("data.name",Matchers.equalTo("Tenali Ramakrishna"))
-                        .body("data.email",Matchers.equalTo(email));
-
+        CreateUserResponse createUserResponse = usersClient.createUser(requestBody);
+        //Assert
+        createUserResponse.assertUser(requestBody);
     }
     
     @Test
@@ -43,15 +36,10 @@ public class CreateUserTests {
                 .name("Summer").gender("female")
                 .email(email).status("active").build();
         //Act
-        usersClient
-                .createUser(requestBody)
-                    .then()
-                        .log().body()
-                //Assert
-                        .statusCode(201)
-                        .body("data.id", Matchers.notNullValue())
-                        .body("data.name",Matchers.equalTo("Summer"))
-                        .body("data.email",Matchers.equalTo(email));
+        CreateUserResponse createUserResponse = usersClient.createUser(requestBody);
+
+        //Assert
+        createUserResponse.assertUser(requestBody);
 
     }
 
