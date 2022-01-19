@@ -1,10 +1,6 @@
-import io.restassured.http.ContentType;
-import io.restassured.response.Response;
 import org.hamcrest.Matchers;
 import org.testng.annotations.Test;
 import users.UsersClient;
-
-import static io.restassured.RestAssured.given;
 
 public class CreateUserTests {
     @Test
@@ -13,7 +9,7 @@ public class CreateUserTests {
         String body = "{\n" +
                 "  \"name\": \"Tenali Ramakrishna\",\n" +
                 "  \"gender\": \"male\",\n" +
-                "  \"email\": \"tenali.ramakrishna1958@15ce.com\",\n" +
+                "  \"email\": \"tenali.ramakrishna1991@15ce.com\",\n" +
                 "  \"status\": \"active\"\n" +
                 "}";
         //Act
@@ -23,10 +19,8 @@ public class CreateUserTests {
        //Assert
                 .statusCode(201)
                 .body("data.id", Matchers.notNullValue())
-                .body("data.gender",Matchers.equalTo("male"))
-                .body("data.status",Matchers.equalTo("active"))
                 .body("data.name",Matchers.equalTo("Tenali Ramakrishna"))
-                .body("data.email",Matchers.equalTo("tenali.ramakrishna1958@15ce.com"));
+                .body("data.email",Matchers.equalTo("tenali.ramakrishna1991@15ce.com"));
 
     }
     
@@ -36,7 +30,7 @@ public class CreateUserTests {
         String body = "{\n" +
                 "  \"name\": \"Summer\",\n" +
                 "  \"gender\": \"female\",\n" +
-                "  \"email\": \"Summer008@15ce.com\",\n" +
+                "  \"email\": \"Summer030@15ce.com\",\n" +
                 "  \"status\": \"active\"\n" +
                 "}";
         //Act
@@ -46,10 +40,8 @@ public class CreateUserTests {
         //Assert
                 .statusCode(201)
                 .body("data.id", Matchers.notNullValue())
-                .body("data.gender",Matchers.equalTo("female"))
-                .body("data.status",Matchers.equalTo("active"))
                 .body("data.name",Matchers.equalTo("Summer"))
-                .body("data.email",Matchers.equalTo("Summer008@15ce.com"));
+                .body("data.email",Matchers.equalTo("Summer030@15ce.com"));
 
     }
 
